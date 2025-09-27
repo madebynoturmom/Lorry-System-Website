@@ -1,0 +1,10 @@
+{
+  "name": "lorry-system-landing",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "npx http-server -c-1 . -p 8080 || python3 -m http.server 8080",
+    "serve-python": "python3 -m http.server 8080"
+  },
+  "devDependencies": {}
+}
