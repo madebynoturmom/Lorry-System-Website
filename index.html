@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Lorry System</title>
+  <title>Home | Lorry System</title>
   <link rel="icon" type="image/png" href="/assets/icons/Lorry-logo.png" />
   <link rel="stylesheet" href="/assets/css/styles.css" />
 </head>
@@ -236,5 +236,26 @@
         .catch(()=>{/* ignore if not available */});
     })();
   </script>
+  <!-- Ad Popup Modal (empty image placeholders — replace later) -->
+  <div id="ad-modal" class="ad-modal" aria-hidden="true">
+    <div class="ad-backdrop"></div>
+    <div class="ad-panel" role="dialog" aria-modal="true" aria-label="Promotional offer">
+      <button class="ad-close" aria-label="Close ad">✕</button>
+      <div class="ad-content">
+        <div class="ad-left">
+          <!-- empty placeholders for partner logos -->
+          <img src="/assets/images/madani.png" alt="" class="ad-logo" />
+          <img src="/assets/images/mdec.png" alt="" class="ad-logo" />
+          <img src="/assets/images/mcmc.jpg" alt="" class="ad-logo" />
+          <img src="/assets/images/bsn.png" alt="" class="ad-logo" />
+        </div>
+        <div class="ad-right">
+          <h2>Claim Your Geran Digital</h2>
+          <p class="ad-lead">Empower your business with Lorry System software. Fill these images later with your badge assets.</p>
+          <a href="#" class="btn ghost ad-cta">Claim it Today</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

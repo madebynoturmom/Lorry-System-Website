@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grant Information</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+    <!-- Dynamic header placeholder -->
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="grant-info">
+            <h1>Enjoy 50% Matching Grant – Up to RM5,000!</h1>
+            <p>Claim it today — hassle-freely through Lorry System!</p>
+            <p>This is your chance to go digital without the financial strain — grants are limited, so claim yours today through Lorry System!</p>
+            <div class="grant-logos">
+                <img src="../assets/icons/malaysia-madani.png" alt="Malaysia Madani">
+                <img src="../assets/icons/mdec.png" alt="MDEC">
+                <img src="../assets/icons/mcmc.png" alt="MCMC">
+                <img src="../assets/icons/bsn.png" alt="BSN">
+            </div>
+        </section>
+    </main>
+
+    <!-- Dynamic footer placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <script src="../assets/js/script.js"></script>
+    <script>
+        // Dynamically load header
+        fetch('../partials/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading header:', error));
+
+        // Dynamically load footer
+        fetch('../partials/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading footer:', error));
+    </script>
+</body>
+</html>

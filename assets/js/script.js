@@ -57,13 +57,39 @@ function toggleCard(header) {
 }
 
 document.addEventListener('DOMContentLoaded', async function(){
-  // allow pages in subfolders to set a base path via: <meta name="base-path" content="..">
-  const meta = document.querySelector('meta[name="base-path"]');
-  const base = meta ? meta.getAttribute('content') + '/' : '';
+    // allow pages in subfolders to set a base path via: <meta name="base-path" content="..">
+    const meta = document.querySelector('meta[name="base-path"]');
+    const base = meta ? meta.getAttribute('content') + '/' : '';
 
-  await Promise.all([
-    loadPartial('#site-header-placeholder', 'partials/header.html', base),
-    loadPartial('#site-footer-placeholder', 'partials/footer.html', base)
-  ]);
-  initUI();
+    await Promise.all([
+        loadPartial('#site-header-placeholder', '/partials/header.html', base),
+        loadPartial('#site-footer-placeholder', '/partials/footer.html', base)
+    ]);
+    initUI();
+
+    // Ad modal: show once per session (you can remove sessionStorage check if you want every load)
+    try{
+        const shown = sessionStorage.getItem('ad_shown');
+        if(!shown){
+            const modal = document.getElementById('ad-modal');
+            if(modal){
+                // reveal the modal
+                modal.setAttribute('aria-hidden','false');
+                // close handlers
+                const close = modal.querySelector('.ad-close');
+                const backdrop = modal.querySelector('.ad-backdrop');
+                function closeModal(){ modal.setAttribute('aria-hidden','true'); sessionStorage.setItem('ad_shown','1'); }
+                if(close) close.addEventListener('click', closeModal);
+                if(backdrop) backdrop.addEventListener('click', closeModal);
+                // allow Esc to close
+                document.addEventListener('keydown', function esc(e){ if(e.key === 'Escape'){ closeModal(); document.removeEventListener('keydown', esc); } });
+            }
+        }
+    }catch(e){/* ignore session storage failures */}
+
+    // Update popup ad button link
+    const popupButton = document.querySelector('.popup-ad .cta-button');
+    if (popupButton) {
+        popupButton.href = './pages/grant.html';
+    }
 });

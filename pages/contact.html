@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+    <!-- Dynamic header placeholder -->
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="contact-form">
+            <h1>Contact Us</h1>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="firstName">First Name *</label>
+                    <input type="text" id="firstName" name="firstName" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name *</label>
+                    <input type="text" id="lastName" name="lastName" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="companyName">Company Name *</label>
+                    <input type="text" id="companyName" name="companyName" required>
+                </div>
+                <div class="form-group">
+                    <label for="role">Role in Business *</label>
+                    <input type="text" id="role" name="role" required>
+                </div>
+                <div class="form-group">
+                    <label for="fleetSize">Fleet Size</label>
+                    <input type="number" id="fleetSize" name="fleetSize">
+                </div>
+                <div class="form-group">
+                    <label for="transportationMode">Mode of Transportation *</label>
+                    <input type="text" id="transportationMode" name="transportationMode" required>
+                </div>
+                <div class="form-group">
+                    <label for="phoneNumber">Phone Number *</label>
+                    <input type="tel" id="phoneNumber" name="phoneNumber" required>
+                </div>
+                <button type="submit" class="btn-primary">Send</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Dynamic footer placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <script src="../assets/js/script.js"></script>
+    <script>
+        // Dynamically load header
+        fetch('../partials/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading header:', error));
+
+        // Dynamically load footer
+        fetch('../partials/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading footer:', error));
+
+        const endpoint = "https://httpdump.app/dumps/44a227b8-c167-42c9-8b28-3ac455f10ff1"; // Replace with your endpoint
+
+        document.getElementById("contactForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            // Collect form data into an object
+            const formData = Object.fromEntries(new FormData(e.target).entries());
+
+            // Wrap in your JSON structure
+            const jsonData = {
+                userDetails: {
+                    firstName: formData.firstName,
+                    lastName: formData.lastName,
+                    email: formData.email,
+                    companyName: formData.companyName,
+                    role: formData.role,
+                    phoneNumber: formData.phoneNumber,
+                },
+                fleetDetails: {
+                    fleetSize: formData.fleetSize,
+                    transportationMode: formData.transportationMode,
+                }
+            };
+
+            try {
+                const response = await fetch(endpoint, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(jsonData)
+                });
+
+                const result = await response.json();
+                console.log("Server response:", result);
+
+                if (response.ok) {
+                    alert("Form submitted successfully!");
+                } else {
+                    alert("Form submission failed.");
+                }
+            } catch (err) {
+                console.error("Error:", err);
+                alert("An error occurred.");
+            }
+        });
+    </script>
+</body>
+</html>
