@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact Us</title>
-    <link rel="stylesheet" href="../assets/css/styles.css" />
+    <link rel="stylesheet" href="/lorrysystem/assets/css/styles.css" />
   </head>
   <body>
     <!-- Dynamic header placeholder -->
@@ -59,10 +59,10 @@
     <!-- Dynamic footer placeholder -->
     <div id="footer-placeholder"></div>
 
-    <script src="../assets/js/script.js"></script>
+    <script src="/lorrysystem/assets/js/script.js"></script>
     <script>
       // Dynamically load header
-      fetch("../partials/header.html")
+      fetch("/lorrysystem/partials/header.html")
         .then((response) => response.text())
         .then((data) => {
           document.getElementById("header-placeholder").innerHTML = data;
@@ -70,7 +70,7 @@
         .catch((error) => console.error("Error loading header:", error));
 
       // Dynamically load footer
-      fetch("../partials/footer.html")
+      fetch("/lorrysystem/partials/footer.html")
         .then((response) => response.text())
         .then((data) => {
           document.getElementById("footer-placeholder").innerHTML = data;
