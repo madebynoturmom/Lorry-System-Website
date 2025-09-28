@@ -10,6 +10,15 @@
 <body>
   <!-- header will be loaded from partials/header.html -->
   <div id="site-header-placeholder"></div>
+  <script>
+    // Explicitly load the header partial into the placeholder
+    fetch('./partials/header.html')
+      .then(resp => resp.text())
+      .then(html => {
+        document.getElementById('site-header-placeholder').innerHTML = html;
+      })
+      .catch(() => {/* ignore if not available */});
+  </script>
 
   <main>
     <section class="hero">
@@ -226,16 +235,16 @@
   </main>
 
   <script src="./assets/js/script.js"></script>
-  <div id="site-footer-placeholder"></div>
   <script>
-    // Load footer partial into the placeholder
-    (function(){
-      fetch('/partials/footer.html')
-        .then(resp=>resp.text())
-        .then(html=>{document.getElementById('site-footer-placeholder').innerHTML = html})
-        .catch(()=>{/* ignore if not available */});
-    })();
+    // Explicitly load the footer partial into the placeholder
+    fetch('./partials/footer.html')
+      .then(resp => resp.text())
+      .then(html => {
+        document.getElementById('site-footer-placeholder').innerHTML = html;
+      })
+      .catch(() => {/* ignore if not available */});
   </script>
+  <div id="site-footer-placeholder"></div>
   <!-- Ad Popup Modal (empty image placeholders — replace later) -->
   <div id="ad-modal" class="ad-modal" aria-hidden="true">
     <div class="ad-backdrop"></div>

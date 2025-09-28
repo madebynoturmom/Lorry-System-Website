@@ -9,6 +9,15 @@
   <link rel="stylesheet" href="../assets/css/styles.css" />
 </head>
 <body>
+  <script>
+    // Explicitly load the header partial into the placeholder
+    fetch('../partials/header.html')
+      .then(resp => resp.text())
+      .then(html => {
+        document.getElementById('site-header-placeholder').innerHTML = html;
+      })
+      .catch(() => {/* ignore if not available */});
+  </script>
   <div id="site-header-placeholder"></div>
   <main>
     <section class="pricing-hero">

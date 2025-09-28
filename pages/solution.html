@@ -30,6 +30,15 @@
   </main>
 
   <script src="../assets/js/script.js"></script>
+  <script>
+    // Explicitly load the header partial into the placeholder
+    fetch('../partials/header.html')
+      .then(resp => resp.text())
+      .then(html => {
+        document.getElementById('site-header-placeholder').innerHTML = html;
+      })
+      .catch(() => {/* ignore if not available */});
+  </script>
   <div id="site-footer-placeholder"></div>
 </body>
 </html>
