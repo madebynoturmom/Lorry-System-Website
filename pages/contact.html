@@ -77,7 +77,7 @@
         })
         .catch((error) => console.error("Error loading footer:", error));
 
-      // HTTP Post using FormSubmit
+      // HTTP Post using FormSubmit with redirect
       const formEl = document.getElementById("contactForm");
       formEl.setAttribute("action", "https://formsubmit.co/pkartikean@gmail.com");
       formEl.setAttribute("method", "POST");
@@ -86,7 +86,8 @@
       const hiddenInputs = [
         { name: "_subject", value: "New Contact Form Submission" },
         { name: "_captcha", value: "false" },
-        { name: "_template", value: "table" }
+        { name: "_template", value: "table" },
+        { name: "_next", value: "https://madebynoturmom.github.io/pages/contact.html?success=true" }
       ];
 
       hiddenInputs.forEach(inputData => {
@@ -96,6 +97,20 @@
         input.value = inputData.value;
         formEl.appendChild(input);
       });
+
+      // Display success message after form submission
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get("success") === "true") {
+        const successMessage = document.createElement("div");
+        successMessage.textContent = "Thank you for reaching out! We will contact you shortly.";
+        successMessage.style.cssText = "background-color: #d4edda; color: #155724; padding: 10px; border: 1px solid #c3e6cb; border-radius: 5px; margin: 10px 0; text-align: center;";
+        document.body.insertBefore(successMessage, document.body.firstChild);
+
+        // Automatically close the message after 5 seconds
+        setTimeout(() => {
+          successMessage.remove();
+        }, 5000);
+      }
     </script>
   </body>
 </html>
