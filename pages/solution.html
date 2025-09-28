@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="base-path" content="..">
   <title>Solution — Lorry System</title>
-  <link rel="icon" type="image/png" href="../assets/icons/Lorry-logo.png" />
-  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <link rel="icon" type="image/png" href="/lorrysystem/assets/icons/Lorry-logo.png" />
+  <link rel="stylesheet" href="/lorrysystem/assets/css/styles.css" />
 </head>
 <body>
   <div id="site-header-placeholder"></div>
@@ -29,10 +29,10 @@
     </section>
   </main>
 
-  <script src="../assets/js/script.js"></script>
+  <script src="/lorrysystem/assets/js/script.js"></script>
   <script>
     // Explicitly load the header partial into the placeholder
-    fetch('../partials/header.html')
+    fetch('/lorrysystem/partials/header.html')
       .then(resp => resp.text())
       .then(html => {
         document.getElementById('site-header-placeholder').innerHTML = html;
