@@ -41,8 +41,8 @@ function initUI(){
 
 document.addEventListener('DOMContentLoaded', async function(){
   await Promise.all([
-    loadPartial('#site-header-placeholder', 'partials/header.html'),
-    loadPartial('#site-footer-placeholder', 'partials/footer.html')
+    loadPartial('#site-header-placeholder', './partials/header.html'),
+    loadPartial('#site-footer-placeholder', './partials/footer.html')
   ]);
   // init UI after partials inserted
   initUI();
